@@ -52,7 +52,7 @@ $ php composer update
 $config = [
     ...
     'components' => [
-        'geoip' => ['class' => 'coderius\GeoIP\GeoIP'],
+        'geoip' => ['class' => 'coderius\geoIp\GeoIP'],
     ]
     ...
 ];
