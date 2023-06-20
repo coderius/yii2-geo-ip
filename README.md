@@ -22,6 +22,10 @@ Run
 ```bash
 $ php composer.phar require coderius/yii2-geo-ip "~1.0"
 ```
+Or equal
+```bash
+$ composer require coderius/yii2-geo-ip "~1.0"
+```
 
 #### OR 
 
@@ -44,7 +48,7 @@ $ php composer update
 
 ## Usage
 
-### Like component
+###  Component registration in app config 
 
 ```php
 <?php

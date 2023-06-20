@@ -1,7 +1,7 @@
 {
     "name": "coderius/yii2-geo-ip",
     "description": "Yii 2 GeoIP extension. Returns country, city, lat, lng of current or specified IP (uses MaxMind's GeoIP2 databases)",
-    "keywords": ["geoip", "geolocation", "maxmind", "yii2"],
+    "keywords": ["geoip", "geolocation", "maxmind", "yii2", "php ip", "ip info"],
     "type": "yii2-extension",
     "license": "MIT",
     "authors": [

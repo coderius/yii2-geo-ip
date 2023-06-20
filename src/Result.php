@@ -7,78 +7,154 @@ namespace coderius\geoIp;
 
 use yii\base\BaseObject;
 
-class Result extends BaseObject {
-    
-    
-    private $_result;
+class Result extends BaseObject
+{
+    private $_readerResult;
+    private $_city;
+    private $_continent;
+    private $_country;
+    private $_location;
+    private $_postal;
+    private $_registeredCountry;
+    private $_subdivisions;
 
-
-    public function __construct($result, $config = [])
+    public function __construct($readerResult, $config = [])
     {
-        $this->_result = $result;
+        $this->setReaderResult($readerResult);
+
+        if ($this->hasKey('city', $readerResult)) {
+            $this->setCity($readerResult['city']);
+        }
+        if ($this->hasKey('continent', $readerResult)) {
+            $this->setContinent($readerResult['continent']);
+        }
+        if ($this->hasKey('country', $readerResult)) {
+            $this->setCountry($readerResult['country']);
+        }
+        if ($this->hasKey('location', $readerResult)) {
+            $this->setLocation($readerResult['location']);
+        }
+        if ($this->hasKey('postal', $readerResult)) {
+            $this->setPostal($readerResult['postal']);
+        }
+        if ($this->hasKey('registered_country', $readerResult)) {
+            $this->setRegisteredCountry($readerResult['registered_country']);
+        }
+        if ($this->hasKey('subdivisions', $readerResult)) {
+            $this->setSubdivisions($readerResult['subdivisions']);
+        }
+
         parent::__construct($config);
     }
-    
-    public function hasResult() {
-        return $this->_result ? true : false;
+
+    public function hasReaderResult()
+    {
+        if (is_array($this->_readerResult)) {
+            return count($this->_readerResult) > 0 ? true : false;
+        }
+        return false;
     }
-    
+
+
+    public function getCity($lang = "en")
+    {
+        return $this->_city->names->$lang;
+    }
+
+    public function getCountry($lang = "en")
+    {
+        return $this->_country->names->$lang;
+    }
+
+
+    public function getLocation()
+    {
+        return $this->_location;
+    }
+
+    public function getIsoCode()
+    {
+        return $this->_country->isoCode;
+    }
+
+    /**
+     * Setters
+     */
+    protected function setReaderResult($data)
+    {
+        return $this->_readerResult = $data;
+    }
+
     /*
      * @param array $data
      * @return object or null
      */
-    protected function getCity() {
-//        return $this->_result;
-        return new City($this->_result['city']);
+    protected function setCity($data)
+    {
+        $this->_city = new City($data);
     }
 
     /*
      * @param array $data
      * @return object|null
      */
-    protected function getContinent() {
-        return new Continent($this->_result['continent']);
-    }
-    
-    /*
-     * @param array $data
-     * @return object|null
-     */
-    protected function getCountry() {
-        return new Country($this->_result['country']);
+    protected function setContinent($data)
+    {
+        $this->_continent = new Continent($data);
     }
 
     /*
      * @param array $data
      * @return object|null
      */
-    protected function getLocation() {
-        return new Location($this->_result['location']);
+    protected function setCountry($data)
+    {
+        $this->_country = new Country($data);
     }
 
     /*
      * @param array $data
      * @return object|null
      */
-    protected function getPostal() {
-        return new Postal($this->_result['postal']);
+    protected function setLocation($data)
+    {
+        $this->_location = new Location($data);
     }
-    
+
     /*
      * @param array $data
      * @return object|null
      */
-    protected function getRegisteredCountry() {
-        return new RegisteredCountry($this->_result['registered_country']);
+    protected function setPostal($data)
+    {
+        $this->_postal = new Postal($data);
     }
 
-    
-    protected function getSubdivisions() {
-        $result = [];
-        foreach($this->_result['subdivisions'] as $subdivision){
-            $result[] = new Subdivision($subdivision);
+    /*
+     * @param array $data
+     * @return object|null
+     */
+    protected function setRegisteredCountry($data)
+    {
+        $this->_registeredCountry = new RegisteredCountry($data);
+    }
+
+
+    protected function setSubdivisions($data)
+    {
+        $subdivisions = [];
+        foreach ($data as $subdivision) {
+            $subdivisions[] = new Subdivision($subdivision);
         }
-        return $result;
+        $this->_subdivisions = $subdivisions;
     }
-    
+
+    private function hasKey($key, $array)
+    {
+        if (array_key_exists($key, $array)) {
+            return true;
+        }
+        return false;
+    }
+
 }

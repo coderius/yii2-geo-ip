@@ -45,6 +45,15 @@ class Location extends BaseObject{
         return $this->_time_zone;
     }
 
+    //alias function getLatitude for  support lysenkobv/yii2-geoip api
+    public function getLat() {
+        return $this->getLatitude();
+    }
+
+    //alias function getLatitude for  support lysenkobv/yii2-geoip api
+    public function getLng() {
+        return $this->getLongitude();
+    }
 
     
 }
