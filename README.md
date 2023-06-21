@@ -34,7 +34,7 @@ add to your `composer.json`
 ```json
 {
     "require": {
-        "coderius/yii2-geo-ip": "~1.0.3"
+        "coderius/yii2-geo-ip": "~1.0"
     }
 }
 ```
