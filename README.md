@@ -66,6 +66,7 @@ somewhere in code
 
 ```php
 $ip = Yii::$app->geoip->ip(); // current user ip
+$ip = Yii::$app->geoip->ip(null, false);// current user ip without catche
 
 $ip = Yii::$app->geoip->ip("208.113.83.165");
 

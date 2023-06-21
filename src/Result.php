@@ -151,9 +151,12 @@ class Result extends BaseObject
 
     private function hasKey($key, $array)
     {
-        if (array_key_exists($key, $array)) {
-            return true;
+        if(is_array($array)){
+            if (array_key_exists($key, $array)) {
+                return true;
+            }
         }
+        
         return false;
     }
 
