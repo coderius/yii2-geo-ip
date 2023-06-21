@@ -93,7 +93,7 @@ $config = [
     ...
     'components' => [
         'geoip' => [
-            'class' => 'coderius\GeoIP\GeoIP',
+            'class' => 'coderius\geoIp\GeoIP',
             'dbPath' => Yii::getAlias('@example/maxmind/database/city.mmdb')
         ],
     ]
