@@ -23,7 +23,10 @@ class Postal extends BaseObject{
         return $this->_code;
     }
     
-    
+    public function __toString()
+    {
+        return $this->code;
+    }
 }
 
 

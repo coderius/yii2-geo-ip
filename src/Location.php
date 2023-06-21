@@ -55,7 +55,10 @@ class Location extends BaseObject{
         return $this->getLongitude();
     }
 
-    
+    public function __toString()
+    {
+        return $this->longitude . " " . $this->latitude;
+    }
 }
 
 

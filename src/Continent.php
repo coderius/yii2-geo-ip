@@ -32,6 +32,12 @@ class Continent extends BaseObject{
     public function getNames() {
         return (object) $this->_names;
     }
+
+    public function __toString()
+    {
+        $lang = "en";
+        return $this->names->$lang;
+    }
     
 }
 

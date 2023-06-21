@@ -65,12 +65,14 @@ $config = [
 somewhere in code
 
 ```php
+
 $ip = Yii::$app->geoip->ip(); // current user ip
 $ip = Yii::$app->geoip->ip(null, false);// current user ip without catche
 
 $ip = Yii::$app->geoip->ip("208.113.83.165");
+```
 
-### Base usage
+
 ```php
 
 $ip = Yii::$app->geoip->ip("208.113.83.165")//or Yii::$app->geoip->ip() for current user
@@ -102,6 +104,7 @@ $config = [
 ];
 ```
 
+### Advanced usage
 
 
 ```
@@ -123,48 +126,192 @@ die;
 The result can be like :
 
 ```php
-object(coderius\geoIp\City)[47]
-  private '_geoname_id' => int 5099836
-  private '_names' => 
-    array (size=4)
-      'en' => string 'Jersey City' (length=11)
-      'ja' => string 'ジャージーシティ' (length=24)
-      'ru' => string 'Джерси-Сити' (length=21)
-      'zh-CN' => string '泽西市' (length=9)
-object(coderius\geoIp\Continent)[47]
-  private '_code' => string 'NA' (length=2)
-  private '_geoname_id' => int 6255149
-  private '_names' => 
-    array (size=8)
-      'de' => string 'Nordamerika' (length=11)
-      'en' => string 'North America' (length=13)
-      'es' => string 'Norteamérica' (length=13)
-      'fr' => string 'Amérique du Nord' (length=17)
-      'ja' => string '北アメリカ' (length=15)
-      'pt-BR' => string 'América do Norte' (length=17)
-      'ru' => string 'Северная Америка' (length=31)
-      'zh-CN' => string '北美洲' (length=9)
-object(coderius\geoIp\Country)[47]
-  private '_iso_code' => string 'US' (length=2)
-  private '_geoname_id' => int 6252001
-  private '_names' => 
-    array (size=8)
-      'de' => string 'USA' (length=3)
-      'en' => string 'United States' (length=13)
-      'es' => string 'Estados Unidos' (length=14)
-      'fr' => string 'États-Unis' (length=11)
-      'ja' => string 'アメリカ合衆国' (length=21)
-      'pt-BR' => string 'Estados Unidos' (length=14)
-      'ru' => string 'США' (length=6)
-      'zh-CN' => string '美国' (length=6)
-object(coderius\geoIp\Location)[47]
-  private '_accuracy_radius' => int 1000
-  private '_latitude' => float 40.7209
-  private '_longitude' => float -74.0468
-  private '_metro_code' => int 501
-  private '_time_zone' => string 'America/New_York' (length=16)
+
+
+object(coderius\geoIp\City)#196 (2) {
+  ["_geoname_id":"coderius\geoIp\City":private]=>
+  int(5099836)
+  ["_names":"coderius\geoIp\City":private]=>
+  array(4) {
+    ["en"]=>
+    string(11) "Jersey City"
+    ["ja"]=>
+    string(24) "ジャージーシティ"
+    ["ru"]=>
+    string(21) "Джерси-Сити"
+    ["zh-CN"]=>
+    string(9) "泽西市"
+  }
+}
+object(coderius\geoIp\Continent)#197 (3) {
+  ["_code":"coderius\geoIp\Continent":private]=>
+  string(2) "NA"
+  ["_geoname_id":"coderius\geoIp\Continent":private]=>
+  int(6255149)
+  ["_names":"coderius\geoIp\Continent":private]=>
+  array(8) {
+    ["de"]=>
+    string(11) "Nordamerika"
+    ["en"]=>
+    string(13) "North America"
+    ["es"]=>
+    string(13) "Norteamérica"
+    ["fr"]=>
+    string(17) "Amérique du Nord"
+    ["ja"]=>
+    string(15) "北アメリカ"
+    ["pt-BR"]=>
+    string(17) "América do Norte"
+    ["ru"]=>
+    string(31) "Северная Америка"
+    ["zh-CN"]=>
+    string(9) "北美洲"
+  }
+}
+object(coderius\geoIp\Country)#198 (3) {
+  ["_iso_code":"coderius\geoIp\Country":private]=>
+  string(2) "US"
+  ["_geoname_id":"coderius\geoIp\Country":private]=>
+  int(6252001)
+  ["_names":"coderius\geoIp\Country":private]=>
+  array(8) {
+    ["de"]=>
+    string(3) "USA"
+    ["en"]=>
+    string(13) "United States"
+    ["es"]=>
+    string(14) "Estados Unidos"
+    ["fr"]=>
+    string(11) "États-Unis"
+    ["ja"]=>
+    string(21) "アメリカ合衆国"
+    ["pt-BR"]=>
+    string(14) "Estados Unidos"
+    ["ru"]=>
+    string(6) "США"
+    ["zh-CN"]=>
+    string(6) "美国"
+  }
+}
+object(coderius\geoIp\Location)#199 (5) {
+  ["_accuracy_radius":"coderius\geoIp\Location":private]=>
+  int(1000)
+  ["_latitude":"coderius\geoIp\Location":private]=>
+  float(40.7209)
+  ["_longitude":"coderius\geoIp\Location":private]=>
+  float(-74.0468)
+  ["_metro_code":"coderius\geoIp\Location":private]=>
+  int(501)
+  ["_time_zone":"coderius\geoIp\Location":private]=>
+  string(16) "America/New_York"
+}
+object(coderius\geoIp\Postal)#200 (3) {
+  ["_code":"coderius\geoIp\Postal":private]=>
+  string(5) "07302"
+  ["_geoname_id":"coderius\geoIp\Postal":private]=>
+  NULL
+  ["_names":"coderius\geoIp\Postal":private]=>
+  array(0) {
+  }
+}
+object(coderius\geoIp\RegisteredCountry)#201 (3) {
+  ["_iso_code":"coderius\geoIp\RegisteredCountry":private]=>
+  string(2) "US"
+  ["_geoname_id":"coderius\geoIp\RegisteredCountry":private]=>
+  int(6252001)
+  ["_names":"coderius\geoIp\RegisteredCountry":private]=>
+  array(8) {
+    ["de"]=>
+    string(3) "USA"
+    ["en"]=>
+    string(13) "United States"
+    ["es"]=>
+    string(14) "Estados Unidos"
+    ["fr"]=>
+    string(11) "États-Unis"
+    ["ja"]=>
+    string(21) "アメリカ合衆国"
+    ["pt-BR"]=>
+    string(14) "Estados Unidos"
+    ["ru"]=>
+    string(6) "США"
+    ["zh-CN"]=>
+    string(6) "美国"
+  }
+}
+array(1) {
+  [0]=>
+  object(coderius\geoIp\Subdivision)#202 (3) {
+    ["_iso_code":"coderius\geoIp\Subdivision":private]=>
+    string(2) "NJ"
+    ["_geoname_id":"coderius\geoIp\Subdivision":private]=>
+    int(5101760)
+    ["_names":"coderius\geoIp\Subdivision":private]=>
+    array(7) {
+      ["en"]=>
+      string(10) "New Jersey"
+      ["es"]=>
+      string(12) "Nueva Jersey"
+      ["fr"]=>
+      string(10) "New Jersey"
+      ["ja"]=>
+      string(27) "ニュージャージー州"
+      ["pt-BR"]=>
+      string(12) "Nova Jérsia"
+      ["ru"]=>
+      string(19) "Нью-Джерси"
+      ["zh-CN"]=>
+      string(12) "新泽西州"
+    }
+  }
+}
+
 
 ```
 
+When try to convert object to string like below, returned data from method _toString in equal classes objects:
+
+```php
+echo $ip->city;
+echo "\n";
+echo $ip->continent;
+echo "\n";
+echo $ip->country;
+echo "\n";
+echo $ip->location;
+echo "\n";
+echo $ip->postal;
+echo "\n";
+echo $ip->registeredCountry;
+echo "\n";
+echo $ip->subdivisions[0];
+echo "\n";
+
+```
+
+Output:
+
+```php
+Jersey City
+North America
+United States
+-74.0468 40.7209
+07302
+United States
+New Jersey
+
+
+```
+
+For example get more info from city object:
+
+```php
+
+$ip->city->GeonameId;
+$lang = Yii::$app->language;
+
+echo $ip->city->names->$lang;
+
+```
 
 This product includes GeoLite2 data created by MaxMind, available from http://www.maxmind.com

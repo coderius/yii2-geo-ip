@@ -16,7 +16,7 @@ class Result extends BaseObject
     private $_location;
     private $_postal;
     private $_registeredCountry;
-    private $_subdivisions;
+    private $_subdivisions = [];
 
     public function __construct($readerResult, $config = [])
     {
@@ -56,25 +56,44 @@ class Result extends BaseObject
     }
 
 
-    public function getCity($lang = "en")
+    public function getCity()
     {
-        return $this->_city->names->$lang;
+        return $this->_city;
     }
 
     public function getCountry($lang = "en")
     {
-        return $this->_country->names->$lang;
+        return $this->_country;
     }
 
+    public function getIsoCode()
+    {
+        return $this->_country->isoCode;
+    }
 
     public function getLocation()
     {
         return $this->_location;
     }
 
-    public function getIsoCode()
+    public function getContinent()
     {
-        return $this->_country->isoCode;
+        return $this->_continent;
+    }
+
+    public function getPostal()
+    {
+        return $this->_postal;
+    }
+
+    public function getRegisteredCountry()
+    {
+        return $this->_registeredCountry;
+    }
+
+    public function getSubdivisions()
+    {
+        return $this->_subdivisions;
     }
 
     /**
@@ -151,12 +170,12 @@ class Result extends BaseObject
 
     private function hasKey($key, $array)
     {
-        if(is_array($array)){
+        if (is_array($array)) {
             if (array_key_exists($key, $array)) {
                 return true;
             }
         }
-        
+
         return false;
     }
 
