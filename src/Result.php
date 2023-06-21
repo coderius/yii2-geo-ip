@@ -9,7 +9,7 @@ use yii\base\BaseObject;
 
 class Result extends BaseObject
 {
-    private $_readerResult;
+    private $_readerResult = [];
     private $_city;
     private $_continent;
     private $_country;
@@ -46,15 +46,6 @@ class Result extends BaseObject
 
         parent::__construct($config);
     }
-
-    public function hasReaderResult()
-    {
-        if (is_array($this->_readerResult)) {
-            return count($this->_readerResult) > 0 ? true : false;
-        }
-        return false;
-    }
-
 
     public function getCity()
     {
@@ -95,6 +86,68 @@ class Result extends BaseObject
     {
         return $this->_subdivisions;
     }
+
+    /**
+     * Has methods
+     */
+    public function hasReaderResult()
+    {
+        if (is_array($this->_readerResult)) {
+            return count($this->_readerResult) > 0 ? true : false;
+        }
+        return false;
+    }
+
+    public function hasCity($prop = null)
+    {
+        if($prop !== null){
+            return isset($this->_city->$prop);
+        }
+        return $this->_city !== null ? true : false;
+    }
+
+    public function hasCountry($prop = null)
+    {
+        if($prop !== null){
+            return isset($this->__country->$prop);
+        }
+        return $this->_country !== null ? true : false;
+    }
+    public function hasLocation($prop = null)
+    {
+        if($prop !== null){
+            return isset($this->_location->$prop);
+        }
+        return $this->_location !== null ? true : false;
+    }
+    public function hasContinent($prop = null)
+    {
+        if($prop !== null){
+            return isset($this->_continent->$prop);
+        }
+        return $this->_continent !== null ? true : false;
+    }
+
+    public function hasPostal($prop = null)
+    {
+        if($prop !== null){
+            return isset($this->_postal->$prop);
+        }
+        return $this->_postal !== null ? true : false;
+    }
+    public function hasRegisteredCountry($prop = null)
+    {
+        if($prop !== null){
+            return isset($this->_registeredCountry->$prop);
+        }
+        return $this->_registeredCountry !== null ? true : false;
+    }
+
+    public function hasSubdivisions()
+    {
+        return count($this->_subdivisions) > 0 ? true : false;
+    }
+
 
     /**
      * Setters

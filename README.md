@@ -310,7 +310,9 @@ For example get more info from city object:
 $ip->city->GeonameId;
 $lang = Yii::$app->language;
 
-echo $ip->city->names->$lang;
+echo $ip->hasCity("names") ? $ip->city->names->$lang : "empty result...";
+//or
+echo $ip->hasCity() ? $ip->city : "empty result...";//from _toString return $ip->city->names->en
 
 ```
 
