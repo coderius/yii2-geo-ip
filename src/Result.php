@@ -59,7 +59,7 @@ class Result extends BaseObject
 
     public function getIsoCode()
     {
-        return $this->_country->isoCode;
+        return $this->hasCountry() ? $this->_country->isoCode : "";
     }
 
     public function getLocation()
